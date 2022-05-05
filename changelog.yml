@@ -1,0 +1,12 @@
+# Give each publish a changelog, newest version should be on the top
+---
+  2.0.0: |
+    - 代码重构
+    - SDK升级
+---
+  1.1.0: |
+    - 通知权限页面改版
+    - UI改版
+---
+  1.0.0: |
+    - 修复清理SDK引来的极少量crash
