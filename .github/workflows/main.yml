@@ -1,79 +1,9 @@
 # Actions官方文档: https://help.github.com/en/actions
 # Actions轮子: https://github.com/marketplace/actions
 name: build
-
-on: 
-  repository_dispatch:
-    types: [adhoc,beta]
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: [self-hosted, sg-mini]
-    env:
-      # 如何创建这些值, 详见截图 screenshot_actions_secret.png
-      # 由管理员创建和保存的passphrase
-      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-      # Apple ID
-      FASTLANE_USER: ${{ secrets.USERNAME }}
-      # Apple ID密码
-      FASTLANE_PASSWORD: ${{ secrets.PASSWORD }}
-      FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-      REPO_NAME: ${{ github.event.repository.name }}
-      ROOM_ID: "oc_e6be28442a96eebae5e55ca7593419f9"
-
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    # 来源: https://github.com/marketplace/actions/checkout
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.client_payload.branch }} #branch会以event payload传递
-        # use Git Large File Storage (LFS)
-        lfs: true # 代码依赖LFS，由于外部环境可能会屏蔽LFS功能，强制打开
-
-    # 缓存fastlane版本配置, 减少CI时间
-    # 来源: https://github.com/marketplace/actions/cache
-    - uses: actions/cache@v2
-      id: cache
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - run: bundle config path vendor/bundle      
-    - name: install fastlane
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: |        
-        bundle install --jobs 4 --retry 5
-        bundle exec fastlane install_plugins
-        
-    # 版本自动更新，独立于编译，否则可能CI机器编译不通过
-    - name: fastlane update version number
-      run: bundle exec fastlane buildbump
-
-    # 可能会影响git config内容，导致version bump不通过，故往后挪
-    - name: link match repo
-      uses: AtlasXV/setup-linked-repo@v1
-      with:
-        grant_endpoint: ${{ secrets.CI_TOKEN_GRANT_ENDPOINT }}
-        # 设置关联的项目，这里示意为match仓库，需要对match仓库进行授权设置后方可使用
-        linked_repository: AtlasXV/certificates
-  
-    # 运行fastlane脚本
-    - name: fastlane build
-      run: bundle exec fastlane ${{ github.event.action }}
-
-    # 发送打包失败消息到群聊
-    - name: notify build failed
-      run: |
-        curl -XPOST \
-        -H "Content-Type:application/json" \
-        -H "X-SPACESHIP-TOKEN:${{ secrets.SPACESHIP_TOKEN }}" \
-        https://spaceship.etm.tech/hubot/notify \
-        -d '{"roomId":"${{ env.ROOM_ID }}","action":"${{ env.REPO_NAME }}的${{ github.event.action }}打包任务","msg":"喔噢！打包失败！[看看怎么回事](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?check_suite_focus=true)！！！"}'
-      if: ${{ failure() }}
-
+steps:
+- uses: actions/first-interaction@v1
+  with:
+    repo-token: ${{ secrets.GITHUB_TOKEN }}
+    issue-message: '# Message with markdown.\nThis is the message that will be displayed on users' first issue.'
+    pr-message: 'Message that will be displayed on users' first pr. Look, a `code block` for markdown.'
