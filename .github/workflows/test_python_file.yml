@@ -7,8 +7,6 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - run: |
-            #cd 'ios'
-            #path=$(pwd)
             path=$(ls)
             echo $path
         
