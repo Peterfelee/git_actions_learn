@@ -7,7 +7,6 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - run: |
-            path = os.getpwd()
+            path=$(pwd)
             echo $path
-            echo 'do it well!'
         
