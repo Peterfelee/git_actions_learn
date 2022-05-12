@@ -6,8 +6,6 @@ jobs:
     test_python:
       runs-on: ubuntu-latest
       steps:
-
-        - uses: actions/check@v2
         - run: |
             echo 'do it well!'
         
