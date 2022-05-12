@@ -9,4 +9,5 @@ jobs:
         - run: |
             path=$(ls)
             echo $path
+            echo "well done!!"
         
