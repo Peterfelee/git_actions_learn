@@ -14,6 +14,10 @@ jobs:
           with:
             python-version: 3.8
 
+        - name: 'install python dependency'
+          run: pip install requests
+
+
         - name: 'auto genertor app event'
           run: |
             sh ./exce_event.sh
