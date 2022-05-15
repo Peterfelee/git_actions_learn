@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo 'done test.sh'
+echo 'done exce_event.sh'
 echo 'i am sh bash file well done it'
 
 cd 'ios'
