@@ -20,6 +20,7 @@ jobs:
 
         - name: 'auto genertor app event'
           run: |
-            sh ./exce_event.sh
-            echo ${{secrets.APP_EVENT_CHAT_ID}}
-        
+            sh ./exce_event.sh ${chat_id}
+
+          env:
+            'chat_id': ${{secrets.APP_EVENT_CHAT_ID}}
