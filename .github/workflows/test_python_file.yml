@@ -6,8 +6,5 @@ jobs:
     test_python:
       runs-on: ubuntu-latest
       steps:
-        - run: |
-            path=$(ls)
-            echo $path
-            echo "well done!!"
+        - run: sh ./test.sh
         
