@@ -20,7 +20,7 @@ urlencode() {
 host_url="https://editor-res.vidma.com/ios/ulink/activity_image_page.html"
 title="title="
 imagePath="imagePath="
-app_event_file_name="app_event_list.text"
+app_event_file_name="auto_app_event/app_event_list.text"
 
 parseApp_event() {
     titleString=""
