@@ -8,4 +8,4 @@ python test.py
 cd '..' || exit
 pwd
 echo 'exec auto_app_event...'
-sh auto_app_event/urlencode_event.sh
+sh ./auto_app_event/urlencode_event.sh
