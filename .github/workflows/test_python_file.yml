@@ -16,5 +16,7 @@ jobs:
 
         - name: 'working job'
           run: |
-              echo 'well done'
+            pwd
+            python ./ios/test.py
+            echo 'well done'
         
