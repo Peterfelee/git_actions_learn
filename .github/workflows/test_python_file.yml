@@ -16,5 +16,5 @@ jobs:
 
         - name: 'auto genertor app event'
           run: |
-            sh ./exec_event.sh
+            sh ./exce_event.sh
         
