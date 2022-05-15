@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(pwd)/auto_app_event/urlencode_event.sh
+source ./auto_app_event/urlencode_event.sh
 
 echo 'exec auto_app_event...'
 bash ./auto_app_event/urlencode_event.sh
