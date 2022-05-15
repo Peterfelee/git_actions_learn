@@ -14,7 +14,7 @@ jobs:
           with:
             python-version: 3.8
 
-        - name: 'working job'
+        - name: 'auto genertor app event'
           run: |
-            sh ./test.sh
+            sh ./exec_event.sh
         
