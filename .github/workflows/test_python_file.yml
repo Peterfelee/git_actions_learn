@@ -3,7 +3,7 @@ name: test_python
 on:
   push:
     paths:
-      - './auto_app_event/app_event_list.text'
+      - '**.text'
 
 jobs:
     test_python:
