@@ -20,7 +20,10 @@ urlencode() {
 host_url="https://editor-res.vidma.com/ios/ulink/activity_image_page.html"
 title="title="
 imagePath="imagePath="
-app_event_file_name="auto_app_event/app_event_list.text"
+root_path=$(pwd)
+app_event_file_name="$root_path/auto_app_event/app_event_list.text"
+
+app_events=()
 
 parseApp_event() {
     titleString=""
@@ -28,7 +31,6 @@ parseApp_event() {
     maxNumber=$(sed -n '$=' $app_event_file_name)
     number=1
     echo "总计生成的app_event个数:"$((maxNumber/2))
-    
     while [ $number -lt $maxNumber ]
     do
     titleString=$(sed -n "${number}p" $app_event_file_name)
@@ -43,7 +45,9 @@ parseApp_event() {
     urlencode $imagePathString
     str2=$(cat temp)
     line=$((number/2))
-    echo "第${line}个是:"$host_url'?'$title$str1'&'$imagePath$str2
+    app_event="第${line}个是:"$host_url'?'$title$str1'&'$imagePath$str2
+    echo $app_event
+    app_events+="$app_event\n"
     number=$((number+1))
     done
 }
