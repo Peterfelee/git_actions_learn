@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # urlencode - codificando sua string para usar em URLs
 urlencode() {

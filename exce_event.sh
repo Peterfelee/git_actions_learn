@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 source $(pwd)/auto_app_event/urlencode_event.sh
 
 echo 'exec auto_app_event...'
