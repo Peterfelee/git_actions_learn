@@ -23,4 +23,4 @@ jobs:
             sh ./exce_event.sh ${chat_id}
 
           env:
-            'chat_id': ${{secrets.APP_EVENT_CHAT_ID}}
+            chat_id: ${{secrets.APP_EVENT_CHAT_ID}}
