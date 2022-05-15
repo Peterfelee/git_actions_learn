@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-cd '..'
-path=$(ls)
-echo $path
+echo 'done test.sh'
