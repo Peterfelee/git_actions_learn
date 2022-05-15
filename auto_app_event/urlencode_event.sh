@@ -46,8 +46,7 @@ parseApp_event() {
     str2=$(cat temp)
     line=$((number/2))
     app_event="第${line}个是:"$host_url'?'$title$str1'&'$imagePath$str2
-    echo $app_event
-    app_events+="$app_event\n"
+    app_events+="$app_event//g"
     number=$((number+1))
     done
 }
