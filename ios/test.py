@@ -1,5 +1,5 @@
 import os
 
 cwd = os.getcwd()
-print(f'this is:', cwd)
+print('this is:%s' % (cwd))
 print('exce py file done')
