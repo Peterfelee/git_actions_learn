@@ -24,9 +24,9 @@ if __name__=='__main__':
     if len(agrs) > 1:
         chat_id = agrs[1]
     print(chat_id)
-    # if chat_id is None or len(chat_id) == 0:
-    #     print('chat_id is empty, please enter chat_id after python command')
-    # else:
-    #     push_message_lark(chat_id)
+    if chat_id is None or len(chat_id) == 0:
+        print('chat_id is empty, please enter chat_id after python command')
+    else:
+        push_message_lark(chat_id)
 
 
