@@ -6,6 +6,7 @@ echo 'i am sh bash file well done it'
 cd 'ios'
 python test.py
 cd '..' || exit
-pwd
+path=$(pwd)
+echo $path
 echo 'exec auto_app_event...'
-sh ./auto_app_event/urlencode_event.sh
+sh $path/auto_app_event/urlencode_event.sh
