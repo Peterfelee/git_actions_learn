@@ -1,6 +1,7 @@
 import os
 import requests
 import sys
+import urlencode_event as ue
 
 def push_message_lark(chat_id,msg):
     lark_url = 'https://open.feishu.cn/open-apis/bot/v2/hook/' + chat_id
@@ -23,8 +24,8 @@ if __name__=='__main__':
     message = ''
     if len(agrs) > 1:
         chat_id = agrs[1]
-    if len(agrs) > 2:
-        message = agrs[2]
+    for str in ue.encodeurl():
+        message += str + '\n'
     print(chat_id,message)
     if chat_id is None or len(chat_id) == 0:
         print('chat_id is empty, please enter chat_id after python command')
