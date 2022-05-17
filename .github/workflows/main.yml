@@ -1,4 +1,4 @@
-name: test_python
+name: event_magic
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
           run: pip install requests
 
 
-        - name: 'auto genertor app event'
+        - name: 'auto genertor app events'
           run: |
             sh ./exce_event.sh ${chat_id}
 
