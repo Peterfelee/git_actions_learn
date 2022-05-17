@@ -3,7 +3,7 @@ name: test_python
 on:
   push:
     paths:
-      - '**.text'
+      - '**.json'
 
 jobs:
     test_python:
