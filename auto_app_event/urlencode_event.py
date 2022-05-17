@@ -5,7 +5,7 @@ import json
 
 def encodeurl():
     host_url = "https://editor-res.vidma.com/ios/ulink/activity_image_page.html"
-    json_path = "/Users/peterlee/study/git_actions_learn/auto_app_event/app_event_list.json"
+    json_path = "./auto_app_event/app_event_list.json"
     with open(json_path, 'r') as json_f:
         json_arr = json.load(json_f)
         print(json_arr)
